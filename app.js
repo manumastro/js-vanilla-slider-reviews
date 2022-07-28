@@ -54,12 +54,12 @@ let currentItem = 0;
 
 // carico l'elemento iniziale quando la pagina si carica
 window.addEventListener('DOMContentLoaded', function(){
-  showPerson(currentItem);
+  showPerson();
 })
 
 // mostro la persona in base al numero
-function showPerson(person){
-  const item = reviews[person];
+function showPerson(){
+  const item = reviews[currentItem];
   img.src = item.img;
   author.textContent = item.name;
   job.textContent = item.job;
@@ -72,7 +72,7 @@ nextBtn.addEventListener('click', function(){
   if(currentItem > reviews.length - 1){
     currentItem = 0;
   }
-  showPerson(currentItem);
+  showPerson();
 })
 
 // mostro la persona precedente
@@ -81,5 +81,13 @@ prevBtn.addEventListener('click', function(){
   if(currentItem < 0){
     currentItem = reviews.length - 1;
   }
-  showPerson(currentItem);
+  showPerson();
+})
+
+
+//mostro una persona a caso
+randomBtn.addEventListener('click', function(){
+  const randomNumber = Math.floor(Math.random() * reviews.length);
+  currentItem = randomNumber;
+  showPerson();
 })
